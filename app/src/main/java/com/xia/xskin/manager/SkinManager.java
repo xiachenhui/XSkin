@@ -13,8 +13,8 @@ public class SkinManager {
 
     private Application mApplication;
 
-    private SkinManager(Application mApplication) {
-        this.mApplication = mApplication;
+    private SkinManager(Application application) {
+        this.mApplication = application;
         /**
          *  提供一个应用的生命周期的回调方法
          *  对应用的生命周期进行集中管理
