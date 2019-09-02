@@ -18,7 +18,7 @@ class SkinActivityLifeCycle implements Application.ActivityLifecycleCallbacks {
         LayoutInflater layoutInflater = LayoutInflater.from(activity);
 
         //添加自定义创建view的工厂
-        layoutInflater.setFactory(new SkinLayoutFactory());
+        layoutInflater.setFactory2(new SkinLayoutFactory2());
     }
 
     @Override
