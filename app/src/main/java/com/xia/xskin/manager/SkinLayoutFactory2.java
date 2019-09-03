@@ -1,9 +1,12 @@
 package com.xia.xskin.manager;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+
+import com.xia.xskin.utils.SkinThemeUtils;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -37,8 +40,11 @@ public class SkinLayoutFactory2 implements LayoutInflater.Factory2, Observer {
      */
     private SkinAttribute mSkinAttribute;
 
-    public SkinLayoutFactory2() {
+    private Activity mActivity;
+
+    public SkinLayoutFactory2(Activity activity) {
         mSkinAttribute = new SkinAttribute();
+        mActivity=activity;
     }
 
     @Override
@@ -126,6 +132,7 @@ public class SkinLayoutFactory2 implements LayoutInflater.Factory2, Observer {
      */
     @Override
     public void update(Observable o, Object arg) {
+        SkinThemeUtils.updateStatusBarColor(mActivity);
         //更换皮肤
         mSkinAttribute.applySkin();
     }

@@ -94,6 +94,7 @@ public class SkinActivity extends Activity {
 //        SkinManager.getInstance().loadSkin(skin.path);
         String path = Environment.getExternalStorageDirectory() + File.separator + "app_skin-debug.apk";
 
+
 //         SkinManager.getInstance().loadSkin("/sdcard/app-skin-debug.skin");
         SkinManager.getInstance().loadSkin(path);
 
