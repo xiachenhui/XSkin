@@ -167,4 +167,14 @@ public class SkinAttribute {
             this.resId = resId;
         }
     }
+
+
+    /**
+     * 换皮肤
+     */
+    public void applySkin() {
+        for (SkinView mSkinView : mSkinViewList) {
+            mSkinView.applySkin();
+        }
+    }
 }

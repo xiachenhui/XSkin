@@ -8,18 +8,20 @@ import android.view.View;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * author : xia chen hui
  * email : 184415359@qq.com
  * date : 2019/8/31/031 7:59
- * desc : 自定义创建的view 的工厂
+ * desc : 自定义创建的view 的工厂，实现 观察者
  **/
-public class SkinLayoutFactory2 implements LayoutInflater.Factory2 {
+public class SkinLayoutFactory2 implements LayoutInflater.Factory2, Observer {
     /**
      * 系统原生的控件
      */
-    private static final String[] mClassPrefixList = {"android.widget", "android.view", "android.webkit"};
+    private static final String[] mClassPrefixList = {"android.widget.", "android.view.", "android.webkit."};
     /**
      * 构造函数参数集合
      */
@@ -48,7 +50,7 @@ public class SkinLayoutFactory2 implements LayoutInflater.Factory2 {
             view = createView(name, context, attrs);
         }
         //筛选复合属性的View
-        mSkinAttribute.load(view,attrs);
+        mSkinAttribute.load(view, attrs);
         return view;
     }
 
@@ -114,5 +116,17 @@ public class SkinLayoutFactory2 implements LayoutInflater.Factory2 {
     @Override
     public View onCreateView(String name, Context context, AttributeSet attrs) {
         return null;
+    }
+
+    /**
+     * 观察到刷新了
+     *
+     * @param o
+     * @param arg
+     */
+    @Override
+    public void update(Observable o, Object arg) {
+        //更换皮肤
+        mSkinAttribute.applySkin();
     }
 }
